@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="index.css">
+    <title>Scientific calculator</title>
+</head>
+<body>
+    <div class="outerDiv">
+        <div class="calBody">
+            <div class="calRowDiv">
+                <!-- display , where you can see your expression and answer -->
+                    <input type="text" id="dis" value="0" oninput="inputBetweenExp()"></input>
+            </div>
+
+            <div class="calRowDiv flexBeside">
+                <div class="button transparentButton bold" value="deg">
+                    DEG
+                </div>
+                <div class="button transparentButton bold" value="EF" onclick="setEF()">
+                    F-E
+                </div>
+            </div>
+
+        <!-- memory function part -->
+        <div class="calRowDiv">
+                <button class="transparentButton" value="MC" onclick="memoryFunction1(this.value)">MC</button>
+                <button class="transparentButton" value="MR" onclick="memoryFunction1(this.value)">MR</button>
+                <button class="transparentButton" value="M+" onclick="memoryFunction1(this.value)">M+</button>
+                <button class="transparentButton" value="M-" onclick="memoryFunction1(this.value)">M-</button>
+                <button class="transparentButton" value="MS" onclick="memoryFunction1(this.value)">MS</button>
+            </div>
+
+            <!-- math function part -->
+            <div class="calRowDiv flexBeside">
+                <div class="button transparentButton longbutton bold dropdown">
+                    <!-- trignometry functions -->
+                    <div>
+                        <font>𝚫</font>
+                        Trigonometric  
+                        <i class="fa fa-angle-down"></i>
+                    </div>
+
+                    <div class="dropdown-content">
+                        <button value="sin" onclick="calculateTrigo(this.value)">Sin()</button>
+                        <button value="cos" onclick="calculateTrigo(this.value)">Cos()</button>
+                        <button value="tan" onclick="calculateTrigo(this.value)">Tan()</button>
+                        <button value="cosec" onclick="calculateTrigo(this.value)">Cosec()</button>
+                        <button value="sec" onclick="calculateTrigo(this.value)">Sec()</button>
+                        <button value="cot" onclick="calculateTrigo(this.value)">Cot()</button>
+
+                    </div>
+                </div>
+
+                <!-- more math functions -->
+                <div class="button transparentButton longbutton bold dropdown">
+                    <div>
+                        <font>⨏</font>
+                        Function
+                        <i class="fa fa-angle-down"></i>
+                    </div>
+                    <div class="dropdown-content">
+                        <button value="randValue" onclick="updateExpresion(this.value)">rand</button>
+                        <button value="fu" onclick="updateExpresion(this.value)">floorUp</button>
+                        <button value="fd" onclick="updateExpresion(this.value)">floorDown</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- below is for math operations and numeric vlaue is there -->
+            <div class="calRowDiv">
+                <button id="2nd" onclick="updateFunction()">2<sup>nd</sup></button>
+                <button value="Math.PI" onclick="updateExpresion(this.value)" >&pi;</button>
+                <button value="2.7182818284" onclick="updateExpresion(this.value)">e</button>
+                <button value="clear" onclick="updateExpresion(this.value)">C</button>
+                <button value="CL" onclick="updateExpresion(this.value)">⌫</button>
+            </div>
+
+
+            <div class="calRowDiv">
+                <button id="x3" value="x2" onclick="updateExpresion(this.value)">x²</button>
+                <button value="1/" onclick="updateExpresion(this.value)">1/&#119909;</button>
+                <button value="|" onclick="updateExpresion(this.value)">|&#119909;|</button>
+                <button value="Math.exp(" onclick="updateExpresion(this.value)">exp</button>
+                <button value="%" onclick="updateExpresion(this.value)">mod</button>
+            </div>
+
+            <div class="calRowDiv">
+                <button id="cbrt" value="Math.sqrt(" onclick="updateExpresion(this.value)">2√x</button>
+                <button value="(" onclick="updateExpresion(this.value)">(</button>
+                <button value=")" onclick="updateExpresion(this.value)">)</button>
+                <button value="!" onclick="updateExpresion(this.value)">n!</button>
+                <button value="/" onclick="updateExpresion(this.value)">&#247;</button>
+            </div>
+
+            <div class="calRowDiv">
+                <button id="yRootx" value="Math.pow(" onclick="updateExpresion(this.value)">x^y</button>
+                <button class="operand" value="7" onclick="updateExpresion(this.value)">7</button>
+                <button class="operand" value="8" onclick="updateExpresion(this.value)">8</button>
+                <button class="operand" value="9" onclick="updateExpresion(this.value)">9</button>
+                <button value="*" onclick="updateExpresion(this.value)">&#215;</button>
+            </div>
+
+            <div class="calRowDiv">
+                <button id="2x" value="Math.pow(10," onclick="updateExpresion(this.value)">10^x</button>
+                <button class="operand" value="4" onclick="updateExpresion(this.value)">4</button>
+                <button class="operand" value="5" onclick="updateExpresion(this.value)">5</button>
+                <button class="operand" value="6" onclick="updateExpresion(this.value)">6</button>
+                <button value="-" onclick="updateExpresion(this.value)">&#8722;</button>
+            </div>
+
+            <div class="calRowDiv">
+                <button id="logyx" value="Math.log(" onclick="updateExpresion(this.value)">log</button>
+                <button class="operand" value="1" onclick="updateExpresion(this.value)">1</button>
+                <button class="operand" value="2" onclick="updateExpresion(this.value)">2</button>
+                <button class="operand" value="3" onclick="updateExpresion(this.value)">3</button>
+                <button value="+" onclick="updateExpresion(this.value)">&#43;</button>
+            </div>
+
+            <div class="calRowDiv">
+                <button id="ex" value="ln" onclick="updateExpresion(this.value)">ln</button>
+                <button value="," onclick="updateExpresion(this.value)">,</button>
+                <button class="operand" value="0" onclick="updateExpresion(this.value)">0</button>
+                <button value="." onclick="updateExpresion(this.value)">.</button>
+                <button class="equalto" value="=" onclick="updateExpresion(this.value)">=</button>
+            </div>
+
+            <!-- For Display memory -->
+            <hr width="100%">
+            <div class="calRowDiv">
+                <div id="memory">
+                    Empty Memory (Use <b>MS</b> to store memory)
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<!-- below is to load Js script -->
+<script>
+    // used callback function 
+    function loadScript(path, callback) {
+        let script = document.createElement('script');
+        script.src = path;
+
+        script.onload = () => callback(null, script);
+        script.onerror = () => callback(new Error(`Script load error for ${path}`));
+        document.head.append(script);
+    }
+    // if error then display alert box
+    loadScript('index.js', function (error, script) {
+        if (error) {
+            window.alert(error);
+        }
+    });
+</script>
+
+</html>
