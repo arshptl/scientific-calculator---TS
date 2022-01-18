@@ -1,0 +1,190 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Open Sans", "Helvetica Neue",
+    sans-serif;
+}
+
+:root {
+  --background-color: #ffffff;
+  --font-color: #212121;
+  --backgroundDiv-color: #f4f4f4;
+  --operator-color: #f9f9f9;
+  --number-color: #fdfdfd;
+  --grey-color: grey;
+  --hover-color: rgba(204, 204, 204, 0.438);
+}
+
+.outerDiv {
+  width: 100%;
+  padding: 0.5em;
+}
+
+.calBody {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  align-items: center;
+  padding: 0.5em;
+  width: 100%;
+  background-color: var(--backgroundDiv-color);
+  color: var(--font-color);
+}
+
+.calRowDiv {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.calRowDiv + .calRowDiv {
+  margin-bottom: 0.1em;
+}
+
+.flexBeside {
+  justify-content: start;
+  gap: 0.1em;
+}
+
+input {
+  float: right;
+  height: 2.3em;
+  text-align: right;
+  background-color: transparent;
+  width: 100%;
+  text-size-adjust: 80%;
+  padding: 0.8em 0.2em;
+  font-size: 3rem;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  unicode-bidi: bidi-override;
+  -webkit-appearance: none;
+}
+
+i {
+  margin-left: 0.3em;
+}
+
+font {
+  margin-right: 0.3em;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.8em;
+  width: 19.4%;
+  background-color: var(--operator-color);
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+button {
+  border: none;
+  padding: 0.7em;
+  width: 19.4%;
+  background-color: var(--operator-color);
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 550;
+}
+
+button:hover,
+.dropdown:hover,
+.button:hover {
+  background-color: var(--hover-color);
+  cursor: pointer;
+}
+
+.longbutton {
+  width: 50%;
+  justify-content: start;
+}
+
+.transparentButton {
+  background-color: transparent;
+}
+
+.greyFont {
+  color: var(--grey-color);
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.operand {
+  font-weight: 600;
+  background-color: var(--number-color);
+  font-size: 1.3rem;
+  padding: 0.6em;
+}
+
+.equalto {
+  background-color: #91c1e7;
+}
+
+.dropdown {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.dropdown-content {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  right: 0;
+  top: 3em;
+  /* background-color: var(--background-color); */
+  z-index: 1;
+}
+
+.dropdown-content button {
+  width: 100%;
+  background-color: rgb(204, 204, 204);
+}
+
+.dropdown-content button:hover {
+  background-color: #f0f0f0;
+}
+
+.dropdown:hover .dropdown-content {
+  display: flex;
+}
+
+hr {
+  margin: 0.3em 0;
+  border: 0;
+}
+
+#memory {
+  background-color: var(--operator-color);
+  width: 100%;
+  padding: 0.7em;
+}
+
+@media (min-width: 800px) {
+  .outerDiv {
+    width: 100%;
+    padding: 1em 5em;
+  }
+
+  .calBody {
+    min-width: 31em;
+    max-width: 32em;
+  }
+
+  .button {
+    font-size: 1rem;
+  }
+
+  button {
+    font-size: 1rem;
+  }
+}
